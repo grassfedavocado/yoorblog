@@ -55,17 +55,9 @@ export default function Users() {
   return (
     <div className="my-5 flex flex-col items-center">
       <div className="flex my-5">
-        <Input
-          value={username}
-          placeholder="Username..."
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <Input value={username} placeholder="Username..." onChange={(e) => setUsername(e.target.value)} />
 
-        <Input
-          value={email}
-          placeholder="Email..."
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Input value={email} placeholder="Email..." onChange={(e) => setEmail(e.target.value)} />
 
         <Button text="Add User" color="red" onClick={() => add_user()} />
       </div>
@@ -80,8 +72,7 @@ export default function Users() {
         ) : (
           users.map((user, index) => (
             <li key={index}>
-              User {index + 1} - Username:{" "}
-              <span className="text-teal-500">{user.username}</span>, Email:{" "}
+              User {index + 1} - Username: <span className="text-teal-500">{user.username}</span>, Email:{" "}
               <span className="text-teal-500">{user.email}</span>
             </li>
           ))
