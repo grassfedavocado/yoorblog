@@ -1,4 +1,5 @@
 import db from "./database";
+import UserAdd from "./userAdd";
 
 export default async function Home() {
   const users = await db.user.findMany();
@@ -9,14 +10,19 @@ export default async function Home() {
         Yoorblog Blogging Application
       </h1>
       <p className="text-lg">Yoorblog is going to an alternative to websites like wordpress & medium.</p>
+      <UserAdd />
       <h3 className="text-teal-500 my-6 text-3xl font-bold">Users</h3>
       <ul>
-        {users.map((user, index) => (
-          <li key={index}>
-            User {index + 1} - Username: <span className="text-teal-500">{user.username}</span>, Email:{" "}
-            <span className="text-teal-500">{user.email}</span>
-          </li>
-        ))}
+        {users.length == 0 ? (
+          <h1>No Users Found</h1>
+        ) : (
+          users.map((user, index) => (
+            <li key={index}>
+              User {index + 1} - Username: <span className="text-teal-500">{user.username}</span>, Email:{" "}
+              <span className="text-teal-500">{user.email}</span>
+            </li>
+          ))
+        )}
       </ul>
     </main>
   );
