@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# yoorblog
-Open Source Next.js Blogging Site
+# Yoorblog Open Source Bloggin
+
+## Open Source Next.js Blogging Site
 =======
 
 > Yoorblog Next.js App Open Source Blogging Tool
@@ -11,5 +11,5 @@ Open Source Next.js Blogging Site
 
 
 ```bash
-git clone git@github.com:iimpulsivedev/yoorblog.git; cd yoorblog; npm run dev
+git clone git@github.com:iimpulsivedev/yoorblog.git; npm i; cd yoorblog; npm run dev
 ```
