@@ -1,7 +1,6 @@
 # Yoorblog Open Source Bloggin
 
 ## Open Source Next.js Blogging Site
-=======
 
 > Yoorblog Next.js App Open Source Blogging Tool
 
