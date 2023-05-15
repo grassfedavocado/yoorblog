@@ -1,4 +1,4 @@
-import { ChangeEvent, HTMLInputTypeAttribute } from "react";
+import { ChangeEvent } from "react";
 
 type Props = {
   type?: string;
