@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="my-8">
         <h1 className="py-1 text-4xl text-teal-500 font-bold">Yoorblog</h1>
       </div>
-      <div className="flex my-4">
+      <div className="md:flex my-4 sm:hidden">
         <Button text="Signup" />
         <Button text="Login" />
       </div>

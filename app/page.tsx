@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-slate-800 text-white">
       <Navbar />
-      <div className="m-10 p-10">
+      <div className="min-h-screen mx-10 px-10">
         <p className="text-lg">
           Our blogging software is a unique platform that combines the best features of WordPress and Drupal but instead of PHP, we use TypeScript.
           This makes our software more efficient and faster than other blogging platforms. Our software is designed to be user-friendly and easy to
