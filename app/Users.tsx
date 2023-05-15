@@ -53,27 +53,30 @@ export default function Users() {
   }, []);
 
   return (
-    <div className="my-5">
-      <Input
-        value={username}
-        placeholder="Username..."
-        onChange={(e) => setUsername(e.target.value)}
-      />
+    <div className="my-5 flex flex-col items-center">
+      <div className="flex my-5">
+        <Input
+          value={username}
+          placeholder="Username..."
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-      <Input
-        value={email}
-        placeholder="Email..."
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <Input
+          value={email}
+          placeholder="Email..."
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <Button text="Add User" color="teal" onClick={() => add_user()} />
+        <Button text="Add User" color="red" onClick={() => add_user()} />
+      </div>
 
-      <h3 className="text-teal-500 my-6 text-3xl font-bold">Users</h3>
+      <h1 className="text-teal-500 my-6 text-6xl font-bold">Users</h1>
+
       <ul>
-        {users?.length == 0 && <h1>No Users Found.</h1>}
+        {users?.length == 0 && <h4 className="text-3xl">No Users Found.</h4>}
 
         {!users ? (
-          <h1 className="text-teal-500 text-3xl">Loading</h1>
+          <h1 className="text-3xl text-teal-500">Loading</h1>
         ) : (
           users.map((user, index) => (
             <li key={index}>
