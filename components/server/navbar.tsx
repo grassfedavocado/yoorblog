@@ -1,4 +1,4 @@
-import Button from "@/app/components/client/button";
+import Button from "../client/button";
 
 export default function Navbar() {
   return (
