@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import Button from "./components/client/button";
-import Input from "./components/client/input";
+import Button from "@/components/client/button";
+import Input from "@/components/client/input";
 import { User } from "@prisma/client";
 
 export default function Users() {
