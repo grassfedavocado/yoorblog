@@ -15,7 +15,7 @@ module.exports = {
         xl: "1440px",
       },
       colors: {
-        testcolor: "slateblue",
+        primary: "darkblue",
       },
       fontFamily: {
         sans: ["Graphik", "sans-serif"],
@@ -32,5 +32,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("prettier-plugin-tailwindcss")],
+  plugins: [],
 };
