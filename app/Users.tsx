@@ -54,15 +54,27 @@ export default function Users() {
 
   return (
     <div className="my-5 flex flex-col items-center">
-      <div className="flex my-5">
-        <Input value={username} placeholder="Username..." onChange={(e) => setUsername(e.target.value)} />
+      <div className="my-5 flex">
+        <Input
+          value={username}
+          placeholder="Username..."
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-        <Input value={email} placeholder="Email..." onChange={(e) => setEmail(e.target.value)} />
+        <Input
+          value={email}
+          placeholder="Email..."
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <Button text="Add User" color="red" onClick={() => add_user()} />
+        <Button
+          text="Add User"
+          color="red"
+          onClick={() => add_user()}
+        />
       </div>
 
-      <h1 className="text-teal-500 my-6 text-6xl font-bold">Users</h1>
+      <h1 className="my-6 text-6xl font-bold text-teal-500">Users</h1>
 
       <ul>
         {users?.length == 0 && <h4 className="text-3xl">No Users Found.</h4>}
@@ -72,8 +84,8 @@ export default function Users() {
         ) : (
           users.map((user, index) => (
             <li key={index}>
-              User {index + 1} - Username: <span className="text-teal-500">{user.username}</span>, Email:{" "}
-              <span className="text-teal-500">{user.email}</span>
+              User {index + 1} - Username: <span className="text-teal-500">{user.username}</span>,
+              Email: <span className="text-teal-500">{user.email}</span>
             </li>
           ))
         )}

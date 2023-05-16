@@ -4,7 +4,7 @@ import Footer from "@/components/server/footer";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-slate-800 text-white">
+    <main className="flex h-screen flex-col bg-slate-800 text-white">
       <Navbar />
       <Body />
       <Footer />
