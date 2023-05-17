@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import db from "@/database";
+import db from "@/utils/database";
 import { User } from "@prisma/client";
 
 export async function GET() {
   const users = await db.user.findMany({
     select: {
+      id: true,
       username: true,
       email: true,
     },
