@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id       BigInt @id @default(autoincrement())
+  id       Int    @id @default(sequence())
   name     String
   username String @unique
   email    String @unique
@@ -19,10 +19,10 @@ model User {
 }
 
 model Post {
-  id        BigInt  @id @default(autoincrement())
+  id        Int     @id @default(sequence())
   title     String
   content   String
   published Boolean
   user      User    @relation(fields: [user_id], references: [id])
-  user_id   BigInt
+  user_id   Int
 }
