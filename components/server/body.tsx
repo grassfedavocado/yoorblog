@@ -14,6 +14,12 @@ export default function Body() {
           </Link>
         </div>
       )}
+
+      <div className="m-12">
+        <Link href="/blogs">
+          <Button text="See Blogs" />
+        </Link>
+      </div>
     </div>
   );
 }
