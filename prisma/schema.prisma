@@ -10,19 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int    @id @default(sequence())
-  name     String
-  username String @unique
-  email    String @unique
-  Post     Post[]
-}
-
 model Post {
   id        Int     @id @default(sequence())
   title     String
   content   String
   published Boolean
-  user      User    @relation(fields: [user_id], references: [id])
-  user_id   Int
+  user_id   String
 }
