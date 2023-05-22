@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Input from "@/components/client/input";
 import Textarea from "@/components/client/textarea";
 import Button from "./button";
@@ -7,6 +8,7 @@ import Button from "./button";
 export default function NewBlogForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { push } = useRouter();
 
   const REQUEST_DATA = {
     title: title,
@@ -30,9 +32,10 @@ export default function NewBlogForm() {
         body: JSON.stringify(REQUEST_DATA),
       });
 
-      const data = await res.text();
+      const data = await res.json();
 
-      if (data == "ok") {
+      if (data === "ok") {
+        push("/");
         return alert("Your blog post has been submitted!");
       }
 
