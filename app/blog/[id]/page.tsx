@@ -1,6 +1,7 @@
 import db from "@/utils/database";
 import { currentUser } from "@clerk/nextjs";
 import NavbarWithBack from "@/components/server/navbarWithBack";
+import Footer from "@/components/server/footer";
 
 type Props = {
   params: {
@@ -21,16 +22,30 @@ export default async function Blog({ params }: Props) {
 
   const post = await db.post.findFirst({
     where: {
-      id: params.id,
+      id: Number(params.id),
     },
   });
 
+  const paragraphs = post?.content.split(/\r?\n/).filter((p) => p != "");
+
   return (
-    <div className="h-screen flex flex-col items-center bg-slate-800 text-white">
-      <NavbarWithBack />
-      <div className="h-screen flex flex-col items-center">
-        <p className="my-12 text-4xl text-teal-500">Blog Post {post?.title}</p>
+    <div className="flex flex-col h-max items-center bg-slate-800 text-white md:h-screen">
+      <div className="h-full">
+        <NavbarWithBack />
+        <div className="flex flex-col items-center mb-8">
+          <p className="text-xl font-bold text-teal-500 md:text-4xl">Blog Post {post?.title}</p>
+          {paragraphs?.map((paragraph, index) => (
+            <p
+              key={index}
+              className="mx-8 text-sm mt-12 indent-10 text-white-500 md:indent-32 md:mx-72 md:text-xl"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
