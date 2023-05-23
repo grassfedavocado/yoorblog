@@ -2,9 +2,21 @@ import Link from "next/link";
 import Button from "../client/button";
 import { auth } from "@clerk/nextjs";
 import Card from "./Card";
+import db from "@/utils/database";
 
-export default function Body() {
+async function get_blogs() {
+  const query = {
+    where: {
+      published: true,
+    },
+  };
+
+  return await Promise.all([db.post.findMany(query), db.post.count(query)]);
+}
+
+export default async function Body() {
   const session = auth();
+  const [blogs, count] = await get_blogs();
 
   return (
     <div className="h-full flex flex-col bg-slate-800 pb-5 text-center">
@@ -17,11 +29,13 @@ export default function Body() {
       )}
 
       <div className="mx-12 flex flex-wrap justify-start">
-        <Card
-          title="Yoorblog Dev Update 1"
-          content="This is a part of the content that I have fakely created inside of this portion. dsaddasdasdadkdshfiouewhfuinbdsuifhuweihfuehwfhdsfhjkhweiufhjdshfjkhweiufhdsjkfhuiweiuhf"
-          link={`/blog/${1}`}
-        />
+        {blogs?.map((post, index) => (
+          <Card
+            key={index}
+            title={post.title}
+            link={`/blog/${post.id}`}
+          />
+        ))}
       </div>
     </div>
   );
