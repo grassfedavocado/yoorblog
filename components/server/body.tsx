@@ -19,7 +19,7 @@ export default async function Body() {
   const [blogs, count] = await get_blogs();
 
   return (
-    <div className="h-full flex flex-col bg-slate-800 pb-8 text-center">
+    <div className="h-max flex flex-col bg-slate-800 pb-8 text-center md:h-full">
       {session?.userId && (
         <div className="m-8">
           <Link href="/blog/">
