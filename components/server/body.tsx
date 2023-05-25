@@ -19,7 +19,7 @@ export default async function Body() {
   const [blogs, count] = await get_blogs();
 
   return (
-    <div className="h-max flex flex-col bg-slate-800 pb-8 text-center md:h-full">
+    <div className="flex h-max flex-col bg-slate-800 pb-8 text-center md:h-screen">
       {session?.userId && (
         <div className="m-8">
           <Link href="/blog/">
@@ -28,7 +28,7 @@ export default async function Body() {
         </div>
       )}
 
-      <div className="flex flex-wrap justify-center md:justify-start">
+      <div className="flex flex-col justify-center sm:flex-wrap md:justify-start">
         {blogs?.map((post, index) => (
           <Card
             key={index}

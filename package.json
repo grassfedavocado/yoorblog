@@ -24,6 +24,9 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
