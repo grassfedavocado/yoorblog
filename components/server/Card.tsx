@@ -9,17 +9,14 @@ type Props = {
 
 export default function Card({ title, content, link }: Props) {
   return (
-    <div className="max-w-sm rounded-xl bg-white shadow-md shadow-teal-500 md:max-w-md">
-      <div className="px-3 py-7 md:px-12 md:py-16">
-        <div className="mb-4 md:mb-12">
-          <p className="text-3xl">{title}</p>
-        </div>
+    <div className="w-80 m-5 h-fit rounded-xl bg-white shadow-md shadow-teal-500 md:w-fit">
+      <div className="m-6">
+        <p className="text-lg md:text-3xl">{title}</p>
 
-        <div className="">
-          <Link href={link}>
-            <Button text="Read" />
-          </Link>
-        </div>
+        <div className="border-t-4 border-t-teal-500 my-5 max-w-xl"></div>
+        <Link href={link}>
+          <Button text="Read" />
+        </Link>
       </div>
     </div>
   );
