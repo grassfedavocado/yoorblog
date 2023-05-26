@@ -3,7 +3,7 @@ import Button from "../client/button";
 
 export default function NavbarWithBack() {
   return (
-    <div className="m-5 flex flex-grow flex-col justify-center">
+    <div className="m-12 flex flex-col text-center">
       <Link href="/">
         <Button text="Back" />
       </Link>

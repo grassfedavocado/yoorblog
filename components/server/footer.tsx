@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="sticky bottom-0 flex w-full flex-row justify-center border-t-2 border-white bg-teal-500 text-white">
-      <h4 className="my-2 text-center text-lg sm:text-2xl md:text-2xl">Yoorblog ©️ 2023</h4>
+    <div className="w-min-screen sticky bottom-0 border-t-2 border-white bg-teal-500">
+      <p className="m-3 text-center text-lg text-white md:m-5 md:text-2xl">Yoorblog ©️ 2023</p>
     </div>
   );
 }

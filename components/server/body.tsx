@@ -7,6 +7,7 @@ import db from "@/utils/database";
 async function get_blogs() {
   const query = {
     where: {
+      id: 1,
       published: true,
     },
   };
@@ -28,7 +29,7 @@ export default async function Body() {
         </div>
       )}
 
-      <div className="my-5 flex w-screen flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
+      <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
         {blogs?.map(async (post, index) => {
           const author = await clerkClient.users.getUser(post.user_id);
 

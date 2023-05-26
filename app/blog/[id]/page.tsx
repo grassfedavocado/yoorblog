@@ -26,9 +26,9 @@ export default async function Blog({ params }: Props) {
   const paragraphs = post?.content.split(/\r?\n/).filter((p) => p != "");
 
   return (
-    <main className="bg-slate-800 text-center text-white">
-      <div className="flex flex-grow flex-col">
-        <NavbarWithBack />
+    <main className="flex min-h-screen flex-col bg-slate-800">
+      <NavbarWithBack />
+      <div className="flex flex-grow flex-col text-center text-white">
         <p className="mb-6 text-lg font-bold text-teal-500 md:mb-12 md:text-4xl">
           Blog Post {post?.title}
         </p>
