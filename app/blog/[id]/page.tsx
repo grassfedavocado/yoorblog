@@ -30,7 +30,7 @@ export default async function Blog({ params }: Props) {
       <NavbarWithBack />
       <div className="flex flex-grow flex-col text-center text-white">
         <p className="mb-6 text-lg font-bold text-teal-500 md:mb-12 md:text-4xl">
-          Blog Post {post?.title}
+          {post?.title}
         </p>
 
         <div className="text-md mb-6 md:text-2xl">
