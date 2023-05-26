@@ -20,6 +20,10 @@ export default function NewBlogForm() {
       return alert("You are missing a title or body content for your post.");
     }
 
+    if (title.length > 20) {
+      return alert("Your title is too long. Try moving some of this into the body down below.");
+    }
+
     if (content.length < 255) {
       return alert(
         "Your body content seems to be very short. We need to know more about what your title suggested."
