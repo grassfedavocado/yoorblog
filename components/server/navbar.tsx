@@ -6,7 +6,7 @@ export default function Navbar() {
   const session = auth();
 
   return (
-    <div className="flex flex-col justify-center border-b-8 border-b-white px-5 md:flex-row md:justify-between">
+    <div className="flex flex-col justify-center border-b-4 border-b-white px-5 md:flex-row md:justify-between">
       <div className="my-8">
         <h1 className="py-1 text-center text-4xl font-bold text-teal-500 md:text-start">
           Yoorblog

@@ -1,7 +1,6 @@
 import db from "@/utils/database";
 import { clerkClient } from "@clerk/nextjs/server";
 import NavbarWithBack from "@/components/server/navbarWithBack";
-import Footer from "@/components/server/footer";
 import { User } from "@clerk/nextjs/dist/server";
 
 type Props = {
@@ -26,8 +25,8 @@ export default async function Blog({ params }: Props) {
   const paragraphs = post?.content.split(/\r?\n/).filter((p) => p != "");
 
   return (
-    <main className="flex h-max flex-col bg-slate-800 text-white md:h-screen">
-      <div className="h-max md:h-full">
+    <main className="flex h-screen flex-col bg-slate-800 text-white">
+      <div className="h-max pb-6">
         <NavbarWithBack />
         <p className="mb-6 text-center text-lg font-bold text-teal-500 md:mb-12 md:text-4xl">
           Blog Post {post?.title}
@@ -49,8 +48,6 @@ export default async function Blog({ params }: Props) {
           </p>
         ))}
       </div>
-
-      <Footer />
     </main>
   );
 }
