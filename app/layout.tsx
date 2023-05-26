@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Yoorblog | Create Blogs",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
         <body>{children}</body>
       </html>
+      <Analytics />
     </ClerkProvider>
   );
 }
