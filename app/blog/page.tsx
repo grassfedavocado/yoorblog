@@ -1,11 +1,15 @@
 import NavbarWithBack from "@/components/server/navbarWithBack";
 import NewBlogForm from "@/components/client/NewBlogForm";
+import Footer from "@/components/server/footer";
 
 export default function Blog() {
   return (
-    <div className="flex h-max flex-col items-center bg-slate-800">
-      <NavbarWithBack />
-      <NewBlogForm />
-    </div>
+    <main className="bg-slate-800">
+      <div className="flex flex-grow flex-col justify-center text-center">
+        <NavbarWithBack />
+        <NewBlogForm />
+        <Footer />
+      </div>
+    </main>
   );
 }

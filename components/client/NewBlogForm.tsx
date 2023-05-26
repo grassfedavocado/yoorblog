@@ -50,7 +50,7 @@ export default function NewBlogForm() {
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center">
+    <div className="flex h-screen flex-col items-center">
       <h1 className="mb-10 text-5xl font-bold text-teal-500 md:text-6xl">New Blog</h1>
       <Input
         value={title}

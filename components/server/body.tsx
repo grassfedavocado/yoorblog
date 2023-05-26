@@ -20,7 +20,7 @@ export default async function Body() {
   const [blogs, count] = await get_blogs();
 
   return (
-    <div className="flex h-max flex-col items-center justify-center bg-slate-800 pb-5">
+    <div className="flex flex-grow flex-col items-center justify-center bg-slate-800 pb-5">
       {session?.userId && (
         <div className="m-8">
           <Link href="/blog/">
@@ -29,7 +29,7 @@ export default async function Body() {
         </div>
       )}
 
-      <div className="flex flex-col justify-center md:flex-row md:flex-wrap md:justify-start">
+      <div className="flex flex-grow flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap">
         {blogs?.map(async (post, index) => {
           const author = await clerkClient.users.getUser(post.user_id);
 
