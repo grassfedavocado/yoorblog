@@ -7,7 +7,6 @@ import db from "@/utils/database";
 async function get_blogs() {
   const query = {
     where: {
-      id: 1,
       published: true,
     },
   };
