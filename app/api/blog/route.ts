@@ -4,8 +4,8 @@ import db from "@/utils/database";
 import { currentUser } from "@clerk/nextjs";
 
 type GetData = {
-  user_id?: string;
   offset?: number;
+  author?: string;
 };
 
 type PostData = {
@@ -16,7 +16,7 @@ type PostData = {
 type QueryData = {
   where: {
     published: boolean;
-    user_id?: string;
+    author?: string;
   };
 };
 
@@ -30,8 +30,8 @@ export async function GET(req: NextApiRequest) {
     },
   };
 
-  if (data?.user_id) {
-    query.where.user_id = data.user_id;
+  if (data?.author) {
+    query.where.author = data.author;
   }
 
   const [blogs, count] = await Promise.all([db.post.findMany(query), db.post.count(query)]);
