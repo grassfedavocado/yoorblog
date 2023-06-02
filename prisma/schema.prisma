@@ -16,6 +16,7 @@ model Post {
   content   String
   published Boolean
   user_id   String
+  author    String
   comments  Comment[]
 }
 
@@ -23,6 +24,7 @@ model Comment {
   id      Int    @id @default(sequence())
   text    String
   user_id String
+  author  String
   Post    Post?  @relation(fields: [postId], references: [id])
   postId  Int?
 }
