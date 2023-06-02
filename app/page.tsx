@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-slate-800">
       <Navbar />
-      {/* @ts-expect-error Async Server Component */}
       <Body />
       <Footer />
     </main>

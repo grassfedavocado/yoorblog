@@ -1,32 +1,52 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest } from "next";
+import { NextResponse } from "next/server";
 import db from "@/utils/database";
 import { currentUser } from "@clerk/nextjs";
+
+type GetData = {
+  user_id?: string;
+  offset?: number;
+};
 
 type PostData = {
   title: string;
   content: string;
 };
 
-export async function GET(req: NextRequest) {
-  const query = {
+type QueryData = {
+  where: {
+    published: boolean;
+    user_id?: string;
+  };
+};
+
+export async function GET(req: NextApiRequest) {
+  const data = req.query as GetData;
+  const offset = data?.offset ?? 0;
+
+  const query: QueryData = {
     where: {
       published: true,
     },
   };
+
+  if (data?.user_id) {
+    query.where.user_id = data.user_id;
+  }
 
   const [blogs, count] = await Promise.all([db.post.findMany(query), db.post.count(query)]);
 
   return NextResponse.json({ rows: count, results: blogs });
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextApiRequest) {
   const user = await currentUser();
 
   if (!user) {
     return NextResponse.json({ message: "You do not have access to this resource." });
   }
 
-  const { title, content } = (await req.json()) as PostData;
+  const { title, content } = req.query as PostData;
 
   try {
     await db.post.create({
@@ -35,6 +55,7 @@ export async function POST(req: NextRequest) {
         content: content,
         published: true,
         user_id: user.id,
+        author: user?.username ?? "N/A",
       },
     });
 
