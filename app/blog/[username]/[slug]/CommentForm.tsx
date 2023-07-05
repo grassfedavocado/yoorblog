@@ -7,10 +7,8 @@ type Props = {
   post_id: number;
 };
 
-export default function NewCommentForm(props: Props) {
+export default function CommentForm(props: Props) {
   const [comment, setComment] = useState("");
-
-  console.log(props);
 
   async function submit() {
     try {

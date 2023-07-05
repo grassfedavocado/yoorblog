@@ -6,7 +6,7 @@ import Input from "@/components/client/input";
 import Textarea from "@/components/client/textarea";
 import Button from "./button";
 
-export default function NewBlogForm() {
+export default function BlogForm() {
   const mounted = onMount();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

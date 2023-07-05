@@ -3,7 +3,7 @@ import db from "@/utils/database";
 import { auth } from "@clerk/nextjs/server";
 import NavbarWithBack from "@/components/server/navbarWithBack";
 import Footer from "@/components/server/footer";
-import NewCommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 import Button from "@/components/client/button";
 
 type Props = {
@@ -58,7 +58,7 @@ export default async function Blog({ params }: Props) {
           <p className="mb-3 text-3xl font-bold">COMMENTS</p>
 
           {session.userId && post?.id ? (
-            <NewCommentForm post_id={post.id} />
+            <CommentForm post_id={post.id} />
           ) : (
             <div className="my-6">
               <p>You need to be logged to comment!</p>
