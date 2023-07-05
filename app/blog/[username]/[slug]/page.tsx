@@ -29,6 +29,10 @@ export default async function Blog({ params }: Props) {
     where: {
       post_id: post?.id,
     },
+    orderBy: {
+      created_at: "desc",
+    },
+    take: 20,
   });
 
   return (
@@ -54,9 +58,8 @@ export default async function Blog({ params }: Props) {
 
         <div className="mb-8 w-full border-t-4 border-black"></div>
 
-        <div className="mb-8 flex flex-grow flex-col items-center">
+        <div className="mb-12 flex flex-grow flex-col items-center">
           <p className="mb-3 text-3xl font-bold">COMMENTS</p>
-
           {session.userId && post?.id ? (
             <CommentForm post_id={post.id} />
           ) : (
@@ -71,17 +74,18 @@ export default async function Blog({ params }: Props) {
               </Link>
             </div>
           )}
-
-          {comments?.map((comment, index) => {
-            return (
-              <p
-                key={index}
-                className="w-fit bg-black rounded-2xl px-5 py-3 text-center text-white"
-              >
-                {comment.text} - Author: {comment.author}
-              </p>
-            );
-          })}
+          <div className="my-6">
+            {comments?.map((comment, index) => {
+              return (
+                <p
+                  key={index}
+                  className="w-fit bg-black rounded-2xl mt-8 px-5 py-3 text-center text-white"
+                >
+                  {comment.text} - Author: {comment.author}
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
 

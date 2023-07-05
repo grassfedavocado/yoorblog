@@ -19,7 +19,9 @@ export default function CommentForm(props: Props) {
 
       const data = await res.json();
 
-      console.log(data);
+      if (data == "ok") {
+        window.location.reload();
+      }
     } catch (err: any) {
       console.log(err.message);
       alert("There was an error in submitting your comment. Please try again later.");
@@ -27,11 +29,13 @@ export default function CommentForm(props: Props) {
   }
 
   return (
-    <div className="mb-12 w-full h-56 md:w-6/12">
-      <Textarea
-        placeholder="Enter your comment here..."
-        onChange={({ target }) => setComment(target.value)}
-      />
+    <div className="mb-6 w-full">
+      <div className="w-full h-56">
+        <Textarea
+          placeholder="Enter your comment here..."
+          onChange={({ target }) => setComment(target.value)}
+        />
+      </div>
 
       <Button
         text="Submit"
