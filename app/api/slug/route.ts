@@ -3,8 +3,6 @@ import db from "@/utils/database";
 import { currentUser } from "@clerk/nextjs";
 
 type PostData = {
-  title: string;
-  content: string;
   slug: string;
 };
 
@@ -15,23 +13,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "You do not have access to this resource." });
   }
 
-  const { title, content, slug } = (await req.json()) as PostData;
+  const { slug } = (await req.json()) as PostData;
 
   try {
-    await db.post.create({
-      data: {
-        title: title,
-        content: content,
-        published: true,
-        slug: slug,
-        user_id: user.id,
+    const row = await db.post.findFirst({
+      where: {
         author: user.username,
+        slug: slug,
       },
     });
 
-    return NextResponse.json("ok");
+    if (row) {
+      return NextResponse.json(1);
+    }
+
+    return NextResponse.json(0);
   } catch (err: any) {
-    console.log(err.message);
     return NextResponse.json("bad");
   }
 }
