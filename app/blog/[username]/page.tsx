@@ -1,3 +1,5 @@
+import Navbar from "@/components/server/navbar";
+import Footer from "@/components/server/footer";
 import db from "@/utils/database";
 import Card from "@/components/server/Card";
 
@@ -20,6 +22,7 @@ export default async function Blogs(props: Props) {
 
   return (
     <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
+      <Navbar />
       {blogs?.map((blog, index) => {
         return (
           <Card
@@ -30,6 +33,7 @@ export default async function Blogs(props: Props) {
           />
         );
       })}
+      <Footer />
     </div>
   );
 }
