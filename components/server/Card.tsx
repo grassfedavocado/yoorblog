@@ -13,7 +13,10 @@ export default function Card({ title, author, link }: Props) {
       <div className="m-6">
         <p className="text-lg md:text-3xl">{title}</p>
         <p className="text-md mt-3 font-bold md:text-xl">
-          Author: <span className="font-normal">{author}</span>
+          Author:{" "}
+          <Link href={`/blog/${author}`}>
+            <span className="font-normal text-blue-600 hover:text-blue-400">{author}</span>
+          </Link>
         </p>
 
         <div className="my-5 max-w-xl border-t-4 border-t-blue-500"></div>

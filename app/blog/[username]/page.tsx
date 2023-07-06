@@ -21,19 +21,21 @@ export default async function Blogs(props: Props) {
   });
 
   return (
-    <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
+    <main className="flex min-h-screen flex-col">
       <Navbar />
-      {blogs?.map((blog, index) => {
-        return (
-          <Card
-            key={index}
-            title={blog.title}
-            author={blog.author}
-            link={`/blog/${blog.author}/${blog.slug}`}
-          />
-        );
-      })}
+      <div className="my-8 flex w-full flex-col flex-grow items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
+        {blogs?.map((blog, index) => {
+          return (
+            <Card
+              key={index}
+              title={blog.title}
+              author={blog.author}
+              link={`/blog/${blog.author}/${blog.slug}`}
+            />
+          );
+        })}
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }

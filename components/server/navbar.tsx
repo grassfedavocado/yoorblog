@@ -8,7 +8,11 @@ export default function Navbar() {
   return (
     <div className="flex flex-col justify-center border-b-4 border-b-black px-5 md:flex-row md:justify-between">
       <div className="my-8">
-        <h1 className="py-1 text-center text-4xl font-bold md:text-start">Yoorblog</h1>
+        <Link href="/">
+          <h1 className="py-1 text-center text-4xl font-semibold md:text-start">
+            Yoor<span className="text-blue-500">blog</span>
+          </h1>
+        </Link>
       </div>
       {session?.userId ? (
         <div className="mb-6 flex justify-center md:m-10">
