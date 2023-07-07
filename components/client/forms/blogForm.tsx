@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import onMount from "./hooks/onMount";
+import onMount from "../hooks/onMount";
 import Input from "@/components/client/input";
 import Textarea from "@/components/client/textarea";
-import Button from "./button";
+import Button from "../button";
 
 export default function BlogForm() {
   const mounted = onMount();
@@ -71,7 +71,7 @@ export default function BlogForm() {
       return alert("Your title is too long. Try moving some of this into the body down below.");
     }
 
-    if (content.length < 255) {
+    if (content.length < 300) {
       return alert(
         "Your body content seems to be very short. We need to know more about what your title suggested."
       );

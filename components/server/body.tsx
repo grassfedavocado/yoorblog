@@ -7,10 +7,10 @@ export default function Body() {
   const session = auth();
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-start bg-white">
+    <div className="flex flex-grow flex-col items-center justify-center bg-white">
       {session?.userId && (
         <div className="m-8">
-          <Link href="/blog/">
+          <Link href="/blog/create">
             <Button text="Create Blog" />
           </Link>
         </div>

@@ -1,5 +1,5 @@
 import db from "@/utils/database";
-import Card from "./Card";
+import Card from "./card";
 
 export default async function Blogs() {
   const blogs = await db.post.findMany({
@@ -17,7 +17,8 @@ export default async function Blogs() {
             key={index}
             title={blog.title}
             author={blog.author}
-            link={`/blog/${blog.author}/${blog.slug}`}
+            content={blog.content}
+            link={`/${blog.author}/${blog.slug}`}
           />
         );
       })}

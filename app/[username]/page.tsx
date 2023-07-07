@@ -1,7 +1,7 @@
 import Navbar from "@/components/server/navbar";
 import Footer from "@/components/server/footer";
 import db from "@/utils/database";
-import Card from "@/components/server/Card";
+import Card from "@/components/server/card";
 
 type Props = {
   params: {
@@ -23,14 +23,15 @@ export default async function Blogs(props: Props) {
   return (
     <main className="flex min-h-screen flex-col">
       <Navbar />
-      <div className="my-8 flex w-full flex-col flex-grow items-center justify-center pb-6 md:flex-row md:flex-wrap md:items-start">
+      <div className="w-full my-6 flex flex-col flex-grow items-center justify-center md:flex-row md:flex-wrap">
         {blogs?.map((blog, index) => {
           return (
             <Card
               key={index}
               title={blog.title}
               author={blog.author}
-              link={`/blog/${blog.author}/${blog.slug}`}
+              content={blog.content}
+              link={`/${blog.author}/${blog.slug}`}
             />
           );
         })}

@@ -29,7 +29,7 @@ export default function CommentForm(props: Props) {
   }
 
   return (
-    <div className="mb-6 w-full">
+    <div className="mb-6 w-full md:w-5/12">
       <div className="w-full h-56">
         <Textarea
           placeholder="Enter your comment here..."

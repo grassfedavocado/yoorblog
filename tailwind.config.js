@@ -18,8 +18,8 @@ module.exports = {
         primary: "darkblue",
       },
       fontFamily: {
-        sans: ["Graphik", "sans-serif"],
-        serif: ["Merriweather", "serif"],
+        sans: ["Roboto", "sans-serif"],
+        serif: ["Roboto", "serif"],
       },
       extend: {
         spacing: {

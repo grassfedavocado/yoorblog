@@ -6,7 +6,7 @@ export default function Navbar() {
   const session = auth();
 
   return (
-    <div className="flex flex-col justify-center border-b-4 border-b-black px-5 md:flex-row md:justify-between">
+    <div className="flex flex-col justify-center border-b-2 border-b-black px-5 md:flex-row md:justify-between">
       <div className="my-8">
         <Link href="/">
           <h1 className="py-1 text-center text-4xl font-semibold md:text-start">
@@ -20,10 +20,10 @@ export default function Navbar() {
         </div>
       ) : (
         <div className="mb-3 text-center md:my-4">
-          <Link href="register">
+          <Link href="/register">
             <Button text="Signup" />
           </Link>
-          <Link href="login">
+          <Link href="/login">
             <Button text="Login" />
           </Link>
         </div>

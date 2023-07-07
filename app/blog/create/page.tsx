@@ -1,5 +1,5 @@
 import NavbarWithBack from "@/components/server/navbarWithBack";
-import BlogForm from "@/components/client/BlogForm";
+import BlogForm from "@/components/client/forms/blogForm";
 import Footer from "@/components/server/footer";
 
 export default function Blog() {
