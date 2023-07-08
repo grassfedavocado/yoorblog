@@ -5,13 +5,35 @@ import NavbarWithBack from "@/components/server/navbarWithBack";
 import Footer from "@/components/server/footer";
 import CommentForm from "../../../components/client/forms/commentForm";
 import Button from "@/components/client/button";
+import { Metadata } from "next";
+
+type params = {
+  author: string;
+  slug: string;
+};
 
 type Props = {
-  params: {
-    author: string;
-    slug: string;
-  };
+  params: params;
 };
+
+type MetaDataProps = {
+  params: params;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: MetaDataProps): Promise<Metadata> {
+  const post = await db.post.findFirst({
+    where: {
+      author: params.author,
+      slug: params.slug,
+    },
+  });
+
+  return {
+    title: `${post?.title} ${post?.author}`,
+    description: post?.content,
+  };
+}
 
 export default async function Blog({ params }: Props) {
   const session = auth();
