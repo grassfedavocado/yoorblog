@@ -14,9 +14,12 @@ export default async function Blogs(props: Props) {
     where: {
       author: props.params.username,
     },
-    orderBy: {
-      created_at: "desc",
-    },
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+      { id: "desc" },
+    ],
     take: 20,
   });
 

@@ -29,9 +29,12 @@ export default async function Blog({ params }: Props) {
     where: {
       post_id: post?.id,
     },
-    orderBy: {
-      created_at: "desc",
-    },
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+      { id: "desc" },
+    ],
     take: 20,
   });
 
@@ -91,7 +94,7 @@ export default async function Blog({ params }: Props) {
                   <div className="flex justify-end">
                     <p className="p-3">
                       Author:{" "}
-                      <Link href={`/${post?.author}`}>
+                      <Link href={`/${comment?.author}`}>
                         <span className="text-blue-500">{comment.author}</span>
                       </Link>
                     </p>

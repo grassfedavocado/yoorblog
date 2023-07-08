@@ -3,9 +3,12 @@ import Card from "./card";
 
 export default async function Blogs() {
   const blogs = await db.post.findMany({
-    orderBy: {
-      created_at: "desc",
-    },
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+      { id: "desc" },
+    ],
     take: 10,
   });
 
