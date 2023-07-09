@@ -20,7 +20,7 @@ export default async function Blogs(props: Props) {
       },
       { id: "desc" },
     ],
-    take: 20,
+    take: 9,
   });
 
   return (
@@ -34,6 +34,7 @@ export default async function Blogs(props: Props) {
               title={blog.title}
               author={blog.author}
               content={blog.content}
+              date={blog.created_at}
               link={`/${blog.author}/${blog.slug}`}
             />
           );

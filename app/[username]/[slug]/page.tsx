@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: MetaDataProps): Promise<Metad
   });
 
   return {
-    title: `${post?.title} ${post?.author}`,
+    title: `${post?.title} by ${post?.author}`,
     description: post?.content,
   };
 }
@@ -44,6 +44,14 @@ export default async function Blog({ params }: Props) {
       slug: params.slug,
     },
   });
+
+  const split = post?.created_at.toDateString().split(" ");
+
+  let date = "";
+
+  if (split) {
+    date = `${split[0]} ${split[1]} ${split[2]}, ${split[3]}`;
+  }
 
   const paragraphs = post?.content.split(/\r?\n/).filter((p) => p != "");
 
@@ -72,6 +80,10 @@ export default async function Blog({ params }: Props) {
               Author: <span className="inline font-normal text-blue-500">{post?.author}</span>
             </p>
           </Link>
+        </div>
+
+        <div className="text-md mb-6 md:text-2xl">
+          <span className="font-bold">Date:</span> {date}
         </div>
 
         {paragraphs?.map((paragraph, index) => (
@@ -103,6 +115,14 @@ export default async function Blog({ params }: Props) {
           )}
           <div className="my-2 flex flex-col justify-center items-center">
             {comments?.map((comment, index) => {
+              const split = comment?.created_at.toDateString().split(" ");
+
+              let date = "";
+
+              if (split) {
+                date = `${split[0]} ${split[1]} ${split[2]}, ${split[3]}`;
+              }
+
               return (
                 <div className="w-10/12 flex flex-col md:w-6/12">
                   <div className="flex justify-end mb-0">
@@ -114,6 +134,7 @@ export default async function Blog({ params }: Props) {
                     </p>
                   </div>
                   <div className="flex justify-end">
+                    <p className="p-3">{date}</p>
                     <p className="p-3">
                       Author:{" "}
                       <Link href={`/${comment?.author}`}>
