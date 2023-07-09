@@ -113,7 +113,7 @@ export default async function Blog({ params }: Props) {
               </Link>
             </div>
           )}
-          <div className="my-2 flex flex-col justify-center items-center">
+          <div className="my-2 w-10/12 flex flex-col justify-center items-center md:w-6/12">
             {comments?.map((comment, index) => {
               const split = comment?.created_at.toDateString().split(" ");
 
@@ -124,11 +124,11 @@ export default async function Blog({ params }: Props) {
               }
 
               return (
-                <div className="w-10/12 flex flex-col md:w-6/12">
-                  <div className="flex justify-end mb-0">
+                <div className="w-full flex flex-col">
+                  <div className="flex justify-end">
                     <p
                       key={index}
-                      className="rounded-2xl rounded-r-none bg-slate-100 mt-8 px-5 py-3"
+                      className="rounded-2xl rounded-r-none text-start bg-slate-100 mt-8 px-5 py-3"
                     >
                       {comment.text}
                     </p>
