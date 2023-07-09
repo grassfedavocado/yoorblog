@@ -105,7 +105,7 @@ export default function BlogForm() {
   return (
     <div className="flex h-screen flex-grow justify-center flex-col items-center py-5">
       <h1 className="mb-10 text-5xl font-bold md:text-6xl">New Blog</h1>
-      <div className="w-full flex justify-center md:w-1/3">
+      <div className="w-full flex justify-center md:w-8/12">
         <Input
           value={title}
           onChange={({ target }) => setTitle(target.value)}
@@ -113,7 +113,7 @@ export default function BlogForm() {
         />
       </div>
 
-      <div className="w-full flex flex-col items-center md:w-1/3">
+      <div className="w-full flex flex-col items-center md:w-8/12">
         <Input
           onChange={({ target }) => {
             clearTimeout(timer);
