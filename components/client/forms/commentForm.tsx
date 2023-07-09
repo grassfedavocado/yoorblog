@@ -11,6 +11,10 @@ export default function CommentForm(props: Props) {
   const [comment, setComment] = useState("");
 
   async function submit() {
+    if (comment.length < 12) {
+      return alert("This comment seems to be too short.");
+    }
+
     try {
       const res = await fetch("/api/comment", {
         method: "POST",
@@ -40,6 +44,7 @@ export default function CommentForm(props: Props) {
       <Button
         text="Submit"
         onClick={submit}
+        disabled={comment.length > 12 ? false : true}
       />
     </div>
   );
