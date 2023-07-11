@@ -124,18 +124,18 @@ export default async function Blog({ params }: Props) {
               }
 
               return (
-                <div className="w-full flex flex-col">
+                <div
+                  key={index}
+                  className="w-full flex flex-col break-words"
+                >
                   <div className="flex justify-end">
-                    <p
-                      key={index}
-                      className="rounded-2xl break-words w-full rounded-r-none text-start bg-slate-100 mt-8 px-5 py-3"
-                    >
+                    <p className="rounded-2xl rounded-r-none max-w-full break-words text-start bg-slate-100 mt-8 px-5 py-3">
                       {comment.text}
                     </p>
                   </div>
-                  <div className="w-full flex justify-end">
-                    <p className="p-1.5">{date}</p>
-                    <p className="p-1.5">
+                  <div className="flex justify-end">
+                    <p className="p-1.5 w-max">{date}</p>
+                    <p className="p-1.5 w-max">
                       Author:{" "}
                       <Link href={`/${comment?.author}`}>
                         <span className="text-blue-500">{comment.author}</span>
