@@ -27,7 +27,7 @@ export default function Card(props: Props) {
 
         <div className="my-5 max-w-xl border-t-4 border-t-blue-500"></div>
 
-        <div className="my-5">
+        <div className="my-5 break-words">
           <p>{props.content.slice(0, 250)}...</p>
         </div>
 

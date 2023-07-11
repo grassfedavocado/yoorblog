@@ -89,7 +89,7 @@ export default async function Blog({ params }: Props) {
         {paragraphs?.map((paragraph, index) => (
           <p
             key={index}
-            className="mx-10 mb-8 text-start indent-10 text-lg md:mx-44 md:indent-32 md:text-2xl"
+            className="mx-10 mb-8 text-start text-lg break-words md:mx-44 md:indent-32 md:text-2xl"
           >
             {paragraph}
           </p>
@@ -128,14 +128,14 @@ export default async function Blog({ params }: Props) {
                   <div className="flex justify-end">
                     <p
                       key={index}
-                      className="rounded-2xl rounded-r-none text-start bg-slate-100 mt-8 px-5 py-3"
+                      className="rounded-2xl break-words w-full rounded-r-none text-start bg-slate-100 mt-8 px-5 py-3"
                     >
                       {comment.text}
                     </p>
                   </div>
-                  <div className="flex justify-end">
-                    <p className="p-3">{date}</p>
-                    <p className="p-3">
+                  <div className="w-full flex justify-end">
+                    <p className="p-1.5">{date}</p>
+                    <p className="p-1.5">
                       Author:{" "}
                       <Link href={`/${comment?.author}`}>
                         <span className="text-blue-500">{comment.author}</span>
