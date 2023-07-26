@@ -17,7 +17,6 @@ model Post {
   published     Boolean
   slug          String
   user_id       String
-  author        String
   created_at    DateTime @default(now())
   last_modified DateTime @updatedAt
 }
@@ -26,8 +25,7 @@ model Comment {
   id            Int      @id @default(sequence())
   text          String
   user_id       String
-  author        String
+  post_id       Int
   created_at    DateTime @default(now())
   last_modified DateTime @updatedAt
-  post_id       Int
 }

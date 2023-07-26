@@ -11,8 +11,8 @@ type PostData = {
 export async function POST(req: Request) {
   const user = await currentUser();
 
-  if (!user?.username) {
-    return NextResponse.json({ message: "You do not have access to this resource." });
+  if (!user) {
+    return NextResponse.json("You do not have access to this resource.");
   }
 
   const { title, content, slug } = (await req.json()) as PostData;
@@ -25,7 +25,6 @@ export async function POST(req: Request) {
         published: true,
         slug: slug,
         user_id: user.id,
-        author: user.username,
       },
     });
 
