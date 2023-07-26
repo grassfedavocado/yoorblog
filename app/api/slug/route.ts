@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import db from "@/utils/database";
-import { currentUser } from "@clerk/nextjs";
+import { clerkClient, currentUser } from "@clerk/nextjs";
 
 type PostData = {
   slug: string;
@@ -9,7 +9,7 @@ type PostData = {
 export async function POST(req: Request) {
   const user = await currentUser();
 
-  if (!user?.username) {
+  if (!user?.id) {
     return NextResponse.json({ message: "You do not have access to this resource." });
   }
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
   try {
     const row = await db.post.findFirst({
       where: {
-        author: user.username,
+        user_id: user.id,
         slug: slug,
       },
     });
