@@ -2,14 +2,7 @@ import { clerkClient } from "@clerk/nextjs";
 import db from "@/utils/database";
 import Card from "./card";
 
-interface Props {
-  params: {
-    page?: string;
-    username?: string;
-  };
-}
-
-export default async function Blogs({ params }: Props) {
+export default async function Blogs() {
   const blogs = await db.post.findMany({
     orderBy: [
       {
