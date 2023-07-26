@@ -19,8 +19,10 @@ export default function Card(props: Props) {
         <p className="text-lg font-bold md:text-3xl">{props.title}</p>
         <p className="text-md mt-3 md:text-xl">
           Author:{" "}
-          <Link href={`/${props.author}`}>
-            <span className="font-normal text-blue-500 hover:text-blue-400">{props.author}</span>
+          <Link href={`/u/${props.author}`}>
+            <span className="font-normal text-blue-500 hover:text-blue-400">
+              {props.author}
+            </span>
           </Link>
         </p>
         <p className="mt-2">{date}</p>
