@@ -1,22 +1,37 @@
-import { auth } from "@clerk/nextjs";
-import Link from "next/link";
-import Button from "../client/button";
-import Blogs from "../server/blogs";
+import { clerkClient } from "@clerk/nextjs";
+import db from "@/utils/database";
+import Card from "./card";
 
-export default function Body() {
-  const session = auth();
+export default async function Body() {
+  const blogs = await db.post.findMany({
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+      { id: "desc" },
+    ],
+    take: 9,
+  });
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center bg-white">
-      {session?.userId && (
-        <div className="m-8">
-          <Link href="/blog/create">
-            <Button text="Create Blog" />
-          </Link>
-        </div>
-      )}
+    <div className="flex flex-grow flex-col bg-white">
+      <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap">
+        {blogs?.map(async (blog, index) => {
+          const username = (await clerkClient.users.getUser(blog.user_id))
+            .username;
 
-      <Blogs />
+          return (
+            <Card
+              key={index}
+              title={blog.title}
+              author={username}
+              content={blog.content}
+              date={blog.created_at}
+              link={`/u/${username}/b/${blog.slug}`}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

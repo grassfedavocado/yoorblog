@@ -17,6 +17,8 @@ export default function BlogForm() {
     color: "text-red-500",
   });
 
+  const invalidSlugChars = "`~!@#$%^&*()_=+[]{}\\|;:'\"<>,.?/";
+
   const parsedSlug = slug.split(" ").join("-").toLowerCase();
 
   const { push } = useRouter();
@@ -46,15 +48,33 @@ export default function BlogForm() {
         });
       }
 
-      if (data == 1 || slug.length == 0 || slug.charAt(slug.length - 1) == " ") {
+      if (
+        data == 1 ||
+        slug.length == 0 ||
+        slug.charAt(slug.length - 1) == " "
+      ) {
         setSlugAvailable(false);
         setSlugStatus({
           status: "Invalid Slug",
           color: "text-red-500",
         });
       }
+
+      for (let char of invalidSlugChars.split("")) {
+        if (slug.includes(char)) {
+          setSlugAvailable(false);
+          setSlugStatus({
+            status: "Invalid Slug",
+            color: "text-red-500",
+          });
+
+          break;
+        }
+      }
     } catch {
-      alert("There was an error in checking for slug availabilty. Please try again later.");
+      alert(
+        "There was an error in checking for slug availabilty. Please try again later."
+      );
     }
   }
 
@@ -68,7 +88,9 @@ export default function BlogForm() {
     }
 
     if (title.length > 32) {
-      return alert("Your title is too long. Try moving some of this into the body down below.");
+      return alert(
+        "Your title is too long. Try moving some of this into the body down below."
+      );
     }
 
     if (content.length < 300) {
@@ -90,7 +112,9 @@ export default function BlogForm() {
         return alert("Your blog post has been submitted!");
       }
 
-      alert("There was some sort of error in creating your blog post. Please try again later.");
+      alert(
+        "There was some sort of error in creating your blog post. Please try again later."
+      );
     } catch (err: any) {
       console.log(err.message);
     }
@@ -103,7 +127,7 @@ export default function BlogForm() {
   }, [slug]);
 
   return (
-    <div className="flex h-screen flex-grow justify-center flex-col items-center py-5">
+    <div className="flex h-screen flex-grow justify-center flex-col items-center py-8 my-8">
       <h1 className="mb-10 text-5xl font-bold md:text-6xl">New Blog</h1>
       <div className="w-full flex justify-center md:w-8/12">
         <Input
@@ -140,6 +164,7 @@ export default function BlogForm() {
       <Button
         text="Submit"
         onClick={() => submit()}
+        disabled={!slugAvailable || content.length < 300 || title.length < 6}
       />
       <div className="mb-5"></div>
     </div>

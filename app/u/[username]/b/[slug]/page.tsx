@@ -1,12 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import db from "@/utils/database";
 import { clerkClient } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
-import NavbarWithBack from "@/components/server/navbarWithBack";
-import Footer from "@/components/server/footer";
-import CommentForm from "@/components/client/forms/commentForm";
 import Button from "@/components/client/button";
-import { Metadata } from "next";
+import { auth } from "@clerk/nextjs/server";
+import CommentForm from "@/components/client/forms/commentForm";
 
 type params = {
   username: string;
@@ -70,11 +68,9 @@ export default async function Blog({ params }: Props) {
   if (!post) {
     return (
       <main className="flex min-h-screen flex-col">
-        <NavbarWithBack />
         <div className="w-full my-6 flex flex-col flex-grow items-center justify-center md:flex-row md:flex-wrap">
           <h1 className="text-4xl font-bold">No Blog Post Found!</h1>
         </div>
-        <Footer />
       </main>
     );
   }
@@ -104,8 +100,7 @@ export default async function Blog({ params }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <NavbarWithBack />
-      <div className="flex flex-grow flex-col text-center">
+      <div className="flex flex-grow flex-col text-center my-12">
         <p className="mb-6 text-3xl font-bold md:mb-12 md:text-5xl">
           {post?.title}
         </p>
@@ -190,8 +185,6 @@ export default async function Blog({ params }: Props) {
           </div>
         </div>
       </div>
-
-      <Footer />
     </main>
   );
 }

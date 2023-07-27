@@ -1,6 +1,4 @@
 import { clerkClient } from "@clerk/nextjs";
-import Navbar from "@/components/server/navbar";
-import Footer from "@/components/server/footer";
 import db from "@/utils/database";
 import Card from "@/components/server/card";
 
@@ -19,11 +17,9 @@ export default async function Blogs({ params }: Props) {
   if (users.length == 0) {
     return (
       <main className="flex min-h-screen flex-col">
-        <Navbar />
         <div className="w-full my-6 flex flex-col flex-grow items-center justify-center md:flex-row md:flex-wrap">
           <h1 className="text-4xl font-bold">No User Found!</h1>
         </div>
-        <Footer />
       </main>
     );
   }
@@ -45,8 +41,7 @@ export default async function Blogs({ params }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-      <div className="w-full my-6 flex flex-col flex-grow items-center justify-center md:flex-row md:flex-wrap">
+      <div className="w-full my-6 flex flex-col flex-grow justify-center md:flex-row md:flex-wrap">
         {blogs?.map((blog, index) => {
           return (
             <Card
@@ -60,7 +55,6 @@ export default async function Blogs({ params }: Props) {
           );
         })}
       </div>
-      <Footer />
     </main>
   );
 }
