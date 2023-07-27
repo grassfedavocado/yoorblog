@@ -1,6 +1,8 @@
 import { clerkClient } from "@clerk/nextjs";
+import Link from "next/link";
 import db from "@/utils/database";
 import Card from "@/components/server/card";
+import Button from "@/components/client/button";
 
 type Props = {
   params: {
@@ -25,6 +27,18 @@ export default async function Blogs({ params }: Props) {
   }
 
   const user = users[0];
+
+  const totalBlogs = await db.post.count({
+    where: {
+      user_id: user.id,
+    },
+    orderBy: [
+      {
+        created_at: "desc",
+      },
+      { id: "desc" },
+    ],
+  });
 
   const blogs = await db.post.findMany({
     where: {
@@ -54,6 +68,11 @@ export default async function Blogs({ params }: Props) {
             />
           );
         })}
+      </div>
+      <div className="my-8 text-center">
+        <Link href={`/u/${user.username}/page/2`}>
+          <Button text="View More" disabled={totalBlogs < 9 ? true : false} />
+        </Link>
       </div>
     </main>
   );

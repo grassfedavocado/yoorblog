@@ -1,10 +1,23 @@
+import { redirect } from "next/navigation";
 import Link from "next/link";
-import { clerkClient } from "@clerk/nextjs";
 import db from "@/utils/database";
+import { clerkClient } from "@clerk/nextjs";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
 
-export default async function Home() {
+type Props = {
+  params: {
+    page: string;
+  };
+};
+
+export default async function Page({ params }: Props) {
+  const page = parseInt(params.page) ?? 1;
+
+  if (page == 1) return redirect("/");
+
+  const offset = page * 9 - 9;
+
   const totalBlogs = await db.post.count({
     orderBy: [
       {
@@ -22,6 +35,7 @@ export default async function Home() {
       { id: "desc" },
     ],
     take: 9,
+    skip: offset,
   });
 
   return (
@@ -45,10 +59,18 @@ export default async function Home() {
           })}
         </div>
 
-        <div className="my-8 text-center">
-          <Link href="/page/2">
-            <Button text="View More" disabled={totalBlogs < 9 ? true : false} />
+        <div className="my-8 text-center flex flex-grow justify-center">
+          <Link href={`/page/${page - 1}`}>
+            <Button text={`Page ${page - 1}`} />
           </Link>
+          {totalBlogs - offset > 9 && (
+            <Link href={`/page/${page + 1}`}>
+              <Button
+                text={`Page ${page + 1}`}
+                disabled={totalBlogs - offset < 9 ? true : false}
+              />
+            </Link>
+          )}
         </div>
       </div>
     </main>

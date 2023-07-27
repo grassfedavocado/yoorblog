@@ -1,6 +1,5 @@
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { Roboto } from "next/font/google";
 import Navbar from "@/components/server/navbar";
