@@ -4,7 +4,6 @@ import db from "@/utils/database";
 import { clerkClient } from "@clerk/nextjs";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
-import { off } from "process";
 
 type Props = {
   params: {
@@ -61,6 +60,8 @@ export default async function Page({ params }: Props) {
     take: 9,
     skip: offset,
   });
+
+  if (blogs.length == 0) return redirect(`/u/${params.username}`);
 
   return (
     <main className="flex min-h-screen flex-col">

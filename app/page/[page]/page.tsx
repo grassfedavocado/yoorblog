@@ -38,6 +38,8 @@ export default async function Page({ params }: Props) {
     skip: offset,
   });
 
+  if (blogs.length == 0) return redirect(`/`);
+
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
