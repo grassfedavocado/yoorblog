@@ -3,6 +3,7 @@ import { clerkClient } from "@clerk/nextjs";
 import db from "@/utils/database";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
+import { Fragment } from "react";
 
 export default async function Home() {
   const totalBlogs = await db.post.count({
@@ -27,7 +28,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
-        <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap">
+        <div className="my-5 flex flex-col items-center justify-around gap-y-12 pb-6 md:flex-row md:flex-wrap">
           {blogs?.map(async (blog, index) => {
             const username = (await clerkClient.users.getUser(blog.user_id))
               .username;

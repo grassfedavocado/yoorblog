@@ -14,7 +14,7 @@ export default function Card(props: Props) {
   const date = `${split[0]} ${split[1]} ${split[2]}, ${split[3]}`;
 
   return (
-    <div className="m-4 h-fit w-80 rounded-2xl border border-black bg-white text-center shadow-md shadow-blue-500 md:w-3/12">
+    <div className="h-fit w-11/12 rounded-2xl border-4 border-blue-500 bg-white text-center md:w-3/12 md:mx-4">
       <div className="m-6">
         <p className="text-lg font-bold md:text-3xl">{props.title}</p>
         <p className="text-md mt-3 md:text-xl">

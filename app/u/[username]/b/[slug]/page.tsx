@@ -6,17 +6,17 @@ import Button from "@/components/client/button";
 import { auth } from "@clerk/nextjs/server";
 import CommentForm from "@/components/client/forms/commentForm";
 
-type params = {
+type Params = {
   username: string;
   slug: string;
 };
 
 type Props = {
-  params: params;
+  params: Params;
 };
 
 type MetaDataProps = {
-  params: params;
+  params: Params;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 

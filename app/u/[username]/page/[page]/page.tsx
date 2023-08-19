@@ -66,7 +66,7 @@ export default async function Page({ params }: Props) {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
-        <div className="my-5 flex w-full flex-col items-center justify-center pb-6 md:flex-row md:flex-wrap">
+        <div className="my-5 flex flex-col items-center justify-evenly gap-y-12 pb-6 md:flex-row md:flex-wrap">
           {blogs?.map(async (blog, index) => {
             return (
               <Card
