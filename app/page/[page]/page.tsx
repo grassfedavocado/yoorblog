@@ -4,6 +4,7 @@ import db from "@/utils/database";
 import { clerkClient } from "@clerk/nextjs";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
+import BlogsWrapper from "@/components/server/blogsWrapper";
 
 type Props = {
   params: {
@@ -43,7 +44,7 @@ export default async function Page({ params }: Props) {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
-        <div className="my-5 flex flex-col items-center justify-evenly gap-y-12 md:flex-row md:flex-wrap">
+        <BlogsWrapper>
           {blogs?.map(async (blog, index) => {
             const username = (await clerkClient.users.getUser(blog.user_id))
               .username;
@@ -59,7 +60,7 @@ export default async function Page({ params }: Props) {
               />
             );
           })}
-        </div>
+        </BlogsWrapper>
 
         <div className="my-8 text-center flex flex-grow justify-center">
           <Link href={`/page/${page - 1}`}>

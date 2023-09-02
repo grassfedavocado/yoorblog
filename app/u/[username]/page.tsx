@@ -3,6 +3,7 @@ import Link from "next/link";
 import db from "@/utils/database";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
+import BlogsWrapper from "@/components/server/blogsWrapper";
 
 type Props = {
   params: {
@@ -56,7 +57,7 @@ export default async function Blogs({ params }: Props) {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
-        <div className="my-6 pb-6 flex flex-col flex-grow justify-evenly gap-y-12 items-center md:flex-row md:flex-wrap">
+        <BlogsWrapper>
           {blogs?.map((blog, index) => {
             return (
               <Card
@@ -69,7 +70,7 @@ export default async function Blogs({ params }: Props) {
               />
             );
           })}
-        </div>
+        </BlogsWrapper>
         <div className="my-8 text-center">
           <Link href={`/u/${user.username}/page/2`}>
             <Button text="View More" disabled={totalBlogs < 9 ? true : false} />

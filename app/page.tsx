@@ -4,6 +4,7 @@ import db from "@/utils/database";
 import Card from "@/components/server/card";
 import Button from "@/components/client/button";
 import { Fragment } from "react";
+import BlogsWrapper from "@/components/server/blogsWrapper";
 
 export default async function Home() {
   const totalBlogs = await db.post.count({
@@ -28,7 +29,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <div className="flex flex-grow flex-col bg-white">
-        <div className="my-5 flex flex-col items-center justify-around gap-y-12 pb-6 md:flex-row md:flex-wrap">
+        <BlogsWrapper>
           {blogs?.map(async (blog, index) => {
             const username = (await clerkClient.users.getUser(blog.user_id))
               .username;
@@ -44,7 +45,7 @@ export default async function Home() {
               />
             );
           })}
-        </div>
+        </BlogsWrapper>
 
         <div className="my-8 text-center">
           <Link href="/page/2">
