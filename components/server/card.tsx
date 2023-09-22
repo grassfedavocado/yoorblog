@@ -27,7 +27,7 @@ export default function Card(props: Props) {
         </p>
         <p className="mt-2">{date}</p>
 
-        <div className="my-5 max-w-xl border-t-4 border-t-blue-500"></div>
+        <div className="my-5 mx-auto max-w-xl border-t-4 border-t-blue-500"></div>
 
         <div className="my-5 break-words">
           <p>{props.content.slice(0, 250)}...</p>
